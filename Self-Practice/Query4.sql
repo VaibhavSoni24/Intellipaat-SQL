@@ -1,0 +1,25 @@
+create database exp4;
+use exp4;
+create table S_Detail(S_ID int primary key, S_Name varchar(30), S_City varchar(20));
+show databases;
+show tables;
+desc S_Detail;
+create table B_Detail(S_ID int primary key, Book varchar(30), Price int);
+desc B_Detail;
+insert into S_Detail(S_ID, S_Name, S_City) values(1, 'A', 'Jaipur');
+insert into S_Detail(S_ID, S_Name, S_City) values(2, 'B', 'Ajmer');
+insert into S_Detail(S_ID, S_Name, S_City) values(4, 'C', 'Kota');
+insert into S_Detail(S_ID, S_Name, S_City) values(5, 'D', 'Delhi');
+select * from S_Detail;
+drop table S_Detail;
+drop table B_Detail;
+insert into B_Detail(S_ID, Book, Price) values(1, 'C', 300);
+insert into B_Detail(S_ID, Book, Price) values(2, 'C++', 350);
+insert into B_Detail(S_ID, Book, Price) values(3, 'JAVA', 400);
+insert into B_Detail(S_ID, Book, Price) values(5, 'DSA', 450);
+select * from B_Detail;
+select * from S_Detail natural join B_Detail;
+select * from S_Detail left join B_Detail on S_Detail.S_ID = B_Detail.S_ID;
+select * from S_Detail right join B_Detail on S_Detail.S_ID = B_Detail.S_ID;
+select * from S_Detail full join B_Detail; #this gives the cartision product and not the actual full join.
+select * from S_Detail right join B_Detail on S_Detail.S_ID = B_Detail.S_ID union select * from S_Detail left join B_Detail on S_Detail.S_ID = B_Detail.S_ID;

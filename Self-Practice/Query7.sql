@@ -1,0 +1,16 @@
+create database viewcheck;
+use viewcheck;
+create table Book(B_ID int primary key, B_Name varchar(20), B_Price int);
+insert into Book values(101, "DSA", 400), (102, "OOP", 300), (103, "DBMS", 450), (104, "JAVA", 500);
+select * from Book;
+create table Detail(B_ID int primary key, S_ID int, Name varchar(20), Branch varchar(10));
+insert into Detail values(101, 1, "A", "CS"), (102, 2, "B", "IT"), (103, 3, "C", "AI"), (104, 4, "D", "Cyber");
+select * from Detail;
+create view myview as select B_ID, B_Price from Book;
+select * from myview;
+drop view myview;
+create view apnaview as select B_ID, B_Price from Book where B_Price > 400;
+select * from apnaview;
+create view mergeview as select Book.B_ID, Book.B_Price, Detail.Name, Detail.Branch from Book, Detail where Book.B_ID = Detail.B_ID;
+select * from mergeview;
+update mergeview set Branch = "EC" where B_ID = 101;

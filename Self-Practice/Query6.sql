@@ -1,0 +1,13 @@
+create database trig;
+use trig;
+create table trigg(ID int primary key, Name varchar(20), Sub1 int, Sub2 int, Sub3 int, Total int);
+desc trigg;
+create trigger marks before insert on trigg for each row set new.total=new.Sub1+new.Sub2+new.Sub3;
+insert into trigg values(101, "Vaibhav", 45, 58, 51, 0);
+select * from trigg;
+insert into trigg values(101, "Vaibhav", 45, 58, 51, 0);
+create table trigg2(ID int primary key, Name varchar(20), Sub1 int, Sub2 int, Sub3 int, Total int default(1));
+select * from trigg2;
+desc trigg2;
+drop table trigg2;
+insert into trigg2 values(104, "Vrashbh", default, 58, 51, default);
